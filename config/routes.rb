@@ -19,4 +19,10 @@ Rails.application.routes.draw do
 
   get 'org_update', to: 'org_edits#edit'
   post 'org_update', to: 'org_edits#update'
+
+  get 'org_join', to: 'org_joins#edit'
+  patch 'org_join', to: 'org_joins#update'
+
+  get 'org_homepage', to: 'org_homepages#new'
+
 end
