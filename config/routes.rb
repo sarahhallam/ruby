@@ -25,4 +25,7 @@ Rails.application.routes.draw do
 
   get 'org_homepage', to: 'org_homepages#new'
 
+  get 'shifts_modify', to: 'shifts_modify#new'
+  post 'shifts_modify', to: 'shifts_modify#create'
+
 end
