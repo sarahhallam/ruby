@@ -29,4 +29,9 @@ Rails.application.routes.draw do
   post 'shifts_modify', to: 'shifts_modify#create'
 
   post 'leave_org', to: 'org_edits#leave'
+  post 'delete_shift', to: 'shifts_modify#destroy'
+
+  get 'shifts_add', to: 'shifts_add#new'
+  post 'shifts_add', to: 'shifts_add#create'
+
 end
