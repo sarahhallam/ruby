@@ -1,0 +1,34 @@
+<h1>Edit Organization</h1>
+
+<%= form_with model: @organization, url: org_update_path do |f| %>
+
+  <p>
+  <%= f.label 'Company you want to edit:'%>
+  <%= f.text_field :company %>
+  </p>
+
+  <p>
+  <%= f.label 'New name:'%>
+  <%= f.text_field :newcompany%>
+  </p>
+  <p>
+  <%= f.label 'New rate:'%>
+  <%= f.number_field :rate, step: :any, precision: 2%>
+  </p>
+  <p>
+  <%= f.submit 'Update' %>
+  </p><br>
+
+  <h3>Existing Organisations </h3>
+  <%= Organization.find_each do |o| %>
+  <p>
+  <li style="text-indent: 40px">
+    <%= o.company %>
+    $<%= o.rate %>
+  </li>
+  </p>
+  <% end %>
+
+  <br><%= link_to 'Return', root_path %>
+
+<% end %>

@@ -1,0 +1,45 @@
+body {
+ background-color: #dfe3ee;
+ padding-left: 2%;
+ padding-top: 2%;
+ padding-right: 2%;
+ padding: 2%;
+}
+
+
+/* unvisited link */
+a:link a:visited{
+  text-decoration: none;
+  color: #3b5998;
+}
+
+/* visited link */
+a:visited {
+  text-decoration: none;
+  color: #3b5998;
+}
+
+/* mouse over link */
+a:hover {
+  text-decoration: none;
+  color: #8b9dc3;
+}
+
+/* selected link */
+a:active {
+  text-decoration: none;
+  color: #8b9dc3;
+}
+
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}

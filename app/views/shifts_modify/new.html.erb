@@ -1,0 +1,41 @@
+<h2><%= Current.user.organization.company %> Shift Page</h2>
+
+<i class="arrow right"></i>  <%= link_to 'click here', shifts_add_path %> to add a shift. <br><br>
+
+<br><%= link_to 'Return to main page', root_path %>
+
+<h3>Existing shifts</h3>
+<%= form_with model: @shift, url: delete_shift_path do |form| %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th>Break Length</th>
+      <th>Hours Worked</th>
+      <th>Shift Cost</th>
+    </tr>
+
+    <% @user_org_id = Current.user.organization_id %>
+    <% @users_under_org = User.where("organization_id = ?", @user_org_id).to_a%>
+
+    <% @users_under_org.each do |x| %>
+      <% @s = Shift.where("user_id = ?", x).to_a %>
+
+      <% @s.each do |y|%>
+        <% if y != [] %>
+          <tr>
+            <td><%= User.find(x.id).name %></td>
+            <td><%= y.start.strftime("%D %l:%M%P") %></td>
+            <td><%= y.finish.strftime("%D %l:%M%P") %></td>
+            <td><%= y.breaklength %></td>
+            <% @shift_length_total = ((y.finish.to_time - y.start.to_time)/1.hours) %>
+            <td><%= @hours_worked = ((@shift_length_total.minutes - y.breaklength)/60).round(2) %></td>
+            <td><%= (@hours_worked * Current.user.organization.rate).round(3) %></td>
+
+            <td><%= form.button :delete, name: 'shift_id', value: y.id %></td>
+            </tr>
+      <%end%>
+    <%end%>
+  <%end%>
+<%end%>

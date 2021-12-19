@@ -1,0 +1,80 @@
+<body>
+  <% if Current.user == nil %>
+    <h1>Welcome!</h1>
+    You are not currently logged in. Please log in or sign up to continue.
+
+    <%= link_to 'Sign Up', sign_up_path %>
+    or
+    <%= link_to 'Login', sign_in_path %>
+
+  <% else %>
+
+  <h1>Welcome <%= Current.user.name %>!</h1>
+
+    <% if Current.user.organization == nil %>
+
+      <%= form_with model: @organization, url: business_path do |form| %>
+
+      It looks like you aren't a member of any organizations.<br>
+      Join an existing one or create a new one <br>
+      <br>
+      <i class="arrow right"></i>  <%= link_to 'join an existing organization', org_join_path %><br><br>
+      <i class="arrow right"></i>  <%= link_to 'edit an existing organization', org_update_path %><br><br>
+
+      <h3> Create A New Organisation </h3>
+      <p>
+      <%= form.label 'company name:'%>
+      <%= form.text_field :company %><br>
+      <%= form.label 'hourly rate:'%>
+      <%= form.number_field :rate %><br>
+      <%= form.submit 'submit' %><br><br>
+      </p>
+
+      <%= link_to 'Logout', logout_path, method: :delete %><br>
+
+      <% end %>
+
+    <% else %>
+      <p>
+
+      You are currently a member of <%=Current.user.organization.company%>.
+      <br><br>
+
+      <i class="arrow right"></i>  <%= link_to 'click here', shifts_modify_path %> to go to your organizations shift page.
+      <br><br>
+      <i class="arrow right"></i>  <%= link_to 'click here', org_update_path %> to edit an existing organization.
+      <br><br>
+      <i class="arrow right"></i>  <%= link_to 'click here', org_join_path %> to join a different existing organization.
+      <br><br>
+      <i class="arrow right"></i>  <%= link_to 'click here', leave_org_path, method: :leave %> to leave your organization.
+      <br>
+
+      </p>
+      <h3>Existing Organisations </h3>
+      <%= Organization.find_each do |o| %>
+      <p>
+      <li style="text-indent: 40px">
+        <%= o.company %>
+        $<%= o.rate %>
+      </li>
+      </p>
+      <%end%>
+
+
+      <%= form_with model: @organization, url: business_path do |form| %>
+      <h3> Create A New Organisation </h3>
+      <p>
+      <%= form.label 'company name:'%>
+      <%= form.text_field :company %><br>
+      <%= form.label 'hourly rate:'%>
+      <%= form.number_field :rate %><br>
+      <%= button_to 'submit', business_path, method: :create%>
+      </p>
+      <br>
+      <%= link_to 'Edit Password', edit_password_path %><br>
+      <%= link_to 'Logout', logout_path, method: :delete %><br><br><br>
+
+    <%end%>
+    <%end%>
+    <%end%>
+</body>

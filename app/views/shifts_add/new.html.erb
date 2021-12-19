@@ -1,0 +1,22 @@
+<%= form_with model: @shift, url: shifts_add_path do |f| %>
+  <h3> Add a shift </h3>
+  <p>
+    <%= f.label 'Start time' %>
+    <%= f.datetime_field :start %>
+  </p>
+
+  <p>
+    <%= f.label 'Finish time' %>
+    <%= f.datetime_field :finish %>
+  </p>
+
+  <p>
+    <%= f.label 'Break length (minutes)' %>
+    <%= f.number_field :breaklength %>
+  </p>
+
+  <p>
+  <%= f.submit 'Submit'%><br><br>
+  <%= link_to 'Return', shifts_modify_path %>
+  </p>
+<%end%>

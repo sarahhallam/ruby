@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2021-12-15 21:57:21
+  finish: 2021-12-15 21:57:21
+  breaklength: 1
+
+two:
+  start: 2021-12-15 21:57:21
+  finish: 2021-12-15 21:57:21
+  breaklength: 1
