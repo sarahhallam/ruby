@@ -26,7 +26,7 @@
       <%= form.label 'company name:'%>
       <%= form.text_field :company %><br>
       <%= form.label 'hourly rate:'%>
-      <%= form.number_field :rate %><br>
+      <%= form.number_field :rate, step: :any, precision: 2%><br>
       <%= form.submit 'submit' %><br><br>
       </p>
 
