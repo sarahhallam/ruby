@@ -6,31 +6,25 @@ body {
  padding: 2%;
 }
 
-
-/* unvisited link */
 a:link a:visited{
   text-decoration: none;
   color: #3b5998;
 }
 
-/* visited link */
 a:visited {
   text-decoration: none;
   color: #3b5998;
 }
 
-/* mouse over link */
 a:hover {
   text-decoration: none;
   color: #8b9dc3;
 }
 
-/* selected link */
 a:active {
   text-decoration: none;
   color: #8b9dc3;
 }
-
 
 .arrow {
   border: solid black;
