@@ -13,7 +13,7 @@
 
     <% if Current.user.organization == nil %>
 
-      <%= form_with model: @organization, url: business_path do |form| %>
+      <%= form_with model: @organization, url: org_new_path do |form| %>
 
       It looks like you aren't a member of any organizations.<br>
       Join an existing one or create a new one <br>
@@ -29,16 +29,12 @@
       <%= form.number_field :rate, step: :any, precision: 2%><br>
       <%= form.submit 'submit' %><br><br>
       </p>
-
       <%= link_to 'Logout', logout_path, method: :delete %><br>
-
       <% end %>
 
     <% else %>
       <p>
-
-      You are currently a member of <%=Current.user.organization.company%>.
-      <br><br>
+      You are currently a member of <%=Current.user.organization.company%>.<br><br>
 
       <i class="arrow right"></i>  <%= link_to 'click here', shifts_modify_path %> to go to your organizations shift page.
       <br><br>
@@ -60,15 +56,14 @@
       </p>
       <%end%>
 
-
-      <%= form_with model: @organization, url: business_path do |form| %>
+      <%= form_with model: @organization, url: org_new_path do |form| %>
       <h3> Create A New Organisation </h3>
       <p>
       <%= form.label 'company name:'%>
       <%= form.text_field :company %><br>
       <%= form.label 'hourly rate:'%>
       <%= form.number_field :rate %><br>
-      <%= button_to 'submit', business_path, method: :create%>
+      <%= button_to 'submit', org_new_path, method: :create%>
       </p>
       <br>
       <%= link_to 'Edit Password', edit_password_path %><br>

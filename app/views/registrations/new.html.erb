@@ -9,7 +9,7 @@
   <%= f.text_field :email %>
   </p>
   <p>
-  <%= f.label 'password' %><br>
+  <%= f.label 'password (minimum 6 characters)' %><br>
   <%= f.password_field :password %>
   </p>
   <p>
@@ -19,4 +19,6 @@
   <p>
   <%= f.submit 'Sign Up' %>
   </p>
+  <br><%= link_to 'Return', root_path %>
+  
 <% end %>

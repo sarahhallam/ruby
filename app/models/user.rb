@@ -5,7 +5,8 @@ class User < ApplicationRecord
 
    # adds virtual attributes for authentication
    has_secure_password
-   # validates email
+
    validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
-   #validates :name, presence: true #new
+   validates :name, presence: true 
+   validates :password, presence: true, length: { minimum: 6}
 end

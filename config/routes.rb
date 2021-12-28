@@ -14,21 +14,19 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
 
-  get 'business', to: 'businesses#new'
-  post 'business', to: 'businesses#create'
+  get 'org_new', to: 'orgs_new#new'
+  post 'org_new', to: 'orgs_new#create'
 
-  get 'org_update', to: 'org_edits#edit'
-  post 'org_update', to: 'org_edits#update'
+  get 'org_update', to: 'orgs_edit#edit'
+  post 'org_update', to: 'orgs_edit#update'
 
-  get 'org_join', to: 'org_joins#edit'
-  patch 'org_join', to: 'org_joins#update'
-
-  get 'org_homepage', to: 'org_homepages#new'
+  get 'org_join', to: 'orgs_join#edit'
+  patch 'org_join', to: 'orgs_join#update'
 
   get 'shifts_modify', to: 'shifts_modify#new'
   post 'shifts_modify', to: 'shifts_modify#create'
 
-  post 'leave_org', to: 'org_edits#leave'
+  post 'leave_org', to: 'orgs_edit#leave'
   post 'delete_shift', to: 'shifts_modify#destroy'
 
   get 'shifts_add', to: 'shifts_add#new'
